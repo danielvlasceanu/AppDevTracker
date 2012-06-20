@@ -1,0 +1,46 @@
+﻿<Window x:Class="AppDevTracker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:c="clr-namespace:SqlConnectionUC;assembly=SqlConnectionUC"
+        Title="MainWindow" Height="340" Width="667">
+    <Grid>
+        <DockPanel VerticalAlignment="Stretch">
+            <DockPanel DockPanel.Dock="Top">
+                <Border BorderThickness="1" BorderBrush="MidnightBlue" Margin="2">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border BorderBrush="CadetBlue" Grid.Column="0" BorderThickness="2" HorizontalAlignment="Right">
+                            <StackPanel DockPanel.Dock="Left">
+                                <TextBlock HorizontalAlignment="Left" Margin="5,5,5,2">Select an application:</TextBlock>
+                                <ComboBox HorizontalAlignment="Left" Margin="5,0,5,5" Width="200">
+
+                                </ComboBox>
+                            </StackPanel>
+                        </Border>
+
+                        <TextBlock TextWrapping="Wrap" Text="Application Development Tracker" Grid.Column="1" TextAlignment="Center" Margin="5" VerticalAlignment="Center" FontWeight="Bold" FontSize="15"/>
+
+                        <Border BorderBrush="CadetBlue" Grid.Column="2" BorderThickness="2" HorizontalAlignment="Right">
+                            <Button HorizontalAlignment="Right" HorizontalContentAlignment="Center" Width="80" Cursor="Hand">
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Margin="2" Foreground="Blue">username</TextBlock>
+                                    <TextBlock Margin="2" Foreground="DarkRed">[Log out]</TextBlock>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                    </Grid>
+                </Border>
+            </DockPanel>
+            <DockPanel DockPanel.Dock="Bottom" VerticalAlignment="Bottom">
+                <StatusBar Name="sbInformation" Height="20" Background="LightCyan" BorderBrush="MidnightBlue" BorderThickness="1" Margin="2">
+                    <TextBlock Name="tblConnectionStatus">(NOT) connected to database</TextBlock>
+                </StatusBar>
+            </DockPanel>
+        </DockPanel>
+    </Grid>
+</Window>
