@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="AppTrackDB" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="dbo.Application" Member="Application">
+    <Type Name="Application">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NChar(200)" CanBeNull="true" />
+      <Column Name="Version" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="DateAdded" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Notes" Type="System.String" DbType="NChar(200)" CanBeNull="true" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="User_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Application_User" Member="User" ThisKey="User_Id" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="FK_Bug_Application" Member="Issue" ThisKey="Id" OtherKey="Application_Id" Type="Issue" DeleteRule="NO ACTION" />
+      <Association Name="FK_FeatureIdeea_Application" Member="FeatureIdeea" ThisKey="Id" OtherKey="Application_Id" Type="FeatureIdeea" DeleteRule="NO ACTION" />
+      <Association Name="FK_Milestone_Application" Member="Milestone" ThisKey="Id" OtherKey="Application_Id" Type="Milestone" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ApplicationIdeea" Member="ApplicationIdeea">
+    <Type Name="ApplicationIdeea">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DateAdded" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="PromotedToApplication" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Notes" Type="System.String" DbType="NChar(200)" CanBeNull="true" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="User_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="FK_ApplicationIdeea_User" Member="User" ThisKey="User_Id" OtherKey="Id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FeatureIdeea" Member="FeatureIdeea">
+    <Type Name="FeatureIdeea">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DateAdded" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="PromotedToMilestone" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Notes" Type="System.String" DbType="NChar(200)" CanBeNull="true" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Application_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="FK_FeatureIdeea_Application" Member="Application" ThisKey="Application_Id" OtherKey="Id" Type="Application" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Issue" Member="Issue">
+    <Type Name="Issue">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Location" Type="System.String" DbType="NChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="PossibleCause" Type="System.String" DbType="NChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="DateAdded" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="SeverityLevel" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PriorityLevel" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Notes" Type="System.String" DbType="NChar(200)" CanBeNull="true" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Application_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Bug_Application" Member="Application" ThisKey="Application_Id" OtherKey="Id" Type="Application" IsForeignKey="true" />
+      <Association Name="FK_Solution_Bug" Member="Solution" ThisKey="Id" OtherKey="Issue_Id" Type="Solution" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Milestone" Member="Milestone">
+    <Type Name="Milestone">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="PriorityLevel" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DateAdded" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DateToFinish" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Completed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Notes" Type="System.String" DbType="NChar(200)" CanBeNull="true" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Application_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Milestone_Application" Member="Application" ThisKey="Application_Id" OtherKey="Id" Type="Application" IsForeignKey="true" />
+      <Association Name="FK_MilestoneExtension_Milestone" Member="MilestoneExtension" ThisKey="Id" OtherKey="Milestone_Id" Type="MilestoneExtension" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MilestoneExtension" Member="MilestoneExtension">
+    <Type Name="MilestoneExtension">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DateToFinish" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Reason" Type="System.String" DbType="NChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="DateAdded" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Notes" Type="System.String" DbType="NChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Milestone_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="FK_MilestoneExtension_Milestone" Member="Milestone" ThisKey="Milestone_Id" OtherKey="Id" Type="Milestone" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Solution" Member="Solution">
+    <Type Name="Solution">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Accepted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DateAdded" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Notes" Type="System.String" DbType="NChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Issue_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Solution_Bug" Member="Issue" ThisKey="Issue_Id" OtherKey="Id" Type="Issue" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.User" Member="User">
+    <Type Name="User">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="DateAdded" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Application_User" Member="Application" ThisKey="Id" OtherKey="User_Id" Type="Application" DeleteRule="NO ACTION" />
+      <Association Name="FK_ApplicationIdeea_User" Member="ApplicationIdeea" ThisKey="Id" OtherKey="User_Id" Type="ApplicationIdeea" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+</Database>
