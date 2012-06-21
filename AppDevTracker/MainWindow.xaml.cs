@@ -78,7 +78,7 @@ namespace AppDevTracker
         }
         private void SetLoginStatus(bool status)
         {
-            this.spLogin.IsEnabled = status;
+            this.bdrControlHost.IsEnabled = status;
         }
         private void SetConnectionStatus(bool status)
         {

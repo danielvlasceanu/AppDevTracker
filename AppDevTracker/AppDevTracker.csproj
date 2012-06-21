@@ -36,17 +36,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ListObject, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Binaries\ListObject.dll</HintPath>
+    </Reference>
     <Reference Include="LogHandler, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Binaries\LogHandler.dll</HintPath>
     </Reference>
-    <Reference Include="MessageBoxHandler, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Binaries\MessageBoxHandler.dll</HintPath>
-    </Reference>
     <Reference Include="SqlConnectionUC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Controls\SqlConnectionUC.dll</HintPath>
+      <HintPath>Binaries\SqlConnectionUC.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -62,6 +62,10 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WpfLoginControl, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Binaries\WpfLoginControl.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -123,7 +127,10 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Binaries\ListObject.dll" />
     <Content Include="Binaries\LogHandler.dll" />
+    <Content Include="Binaries\SqlConnectionUC.dll" />
+    <Content Include="Binaries\WpfLoginControl.dll" />
     <Content Include="Controls\SqlConnectionUC.dll" />
   </ItemGroup>
   <ItemGroup />
